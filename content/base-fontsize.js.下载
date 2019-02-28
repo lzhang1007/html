@@ -1,0 +1,25 @@
+(function() {
+  /*
+   * 750 设计稿 rem 基数 100px
+   * 配合 sass 方法 px2rem(number) 使用
+   * number 为设计稿字号大小
+   *
+   * font-size: px2rem(100); 
+   * => font-size: 1rem;
+   *
+   * height: px2rem(50); 
+   * => height: 0.5rem;
+   * 
+   * line-height: px2rem(60); 
+   * => line-height: 0.6rem;
+   */
+  var winWidth = window.innerWidth;
+  var uiWidth = 750;
+  var baseFontSize = 100;
+  var fs = baseFontSize * winWidth / uiWidth;
+
+  fs = fs > baseFontSize ? baseFontSize : fs;
+
+  document.getElementsByTagName('html')[0].style.fontSize = fs + 'px';
+
+})();

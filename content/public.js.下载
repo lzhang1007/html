@@ -1,0 +1,31 @@
+$(function() {
+  (function() {
+    var $list = $('.list');
+
+    $list.each(function(index) {
+      var $this = $(this);
+      var $btn = $(this).find('.list-more');
+      var max = $(this).attr('data-max');
+      $(this).attr('data-open', 0);
+
+      $(this).find('li:lt(' + max + ')').show();
+
+      $btn.on('click', function() {
+        var open = $this.attr('data-open');
+
+        $this.find('li').hide();
+        if (open == 0) {
+          $this.find('li').show();
+          $this.attr('data-open', 1);
+          $(this).html('点击关闭');
+          $(this).addClass('list-more-open');
+        } else {
+          $this.attr('data-open', 0);
+          $this.find('li:lt(' + max + ')').show();
+          $(this).html('点击展开');
+          $(this).removeClass('list-more-open');
+        }
+      })
+    });
+  })();
+});
